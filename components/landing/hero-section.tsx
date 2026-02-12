@@ -37,7 +37,7 @@ export function HeroSection() {
         </h1>
 
         <p className="mx-auto mb-10 max-w-2xl text-balance text-lg leading-relaxed text-muted-foreground">
-          Astra-X combines AI-powered demand forecasting with blockchain trust
+          VyavsAI combines AI-powered demand forecasting with blockchain trust
           layers to create autonomous, transparent retail supply chains.
           Simulate outcomes, optimize decisions, and execute with smart contracts.
         </p>

@@ -33,7 +33,7 @@ export function SidebarNav() {
         <Link href="/" className="flex items-center gap-2">
           <Hexagon className="h-6 w-6 text-primary" strokeWidth={1.5} />
           <span className="text-base font-semibold tracking-tight text-sidebar-foreground">
-            Astra-X
+            VyavsAI
           </span>
         </Link>
       </div>

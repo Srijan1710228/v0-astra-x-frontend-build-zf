@@ -9,7 +9,7 @@ const inter = Inter({ subsets: ['latin'], variable: '--font-inter' })
 const jetbrainsMono = JetBrains_Mono({ subsets: ['latin'], variable: '--font-jetbrains' })
 
 export const metadata: Metadata = {
-  title: 'Astra-X | Autonomous Retail Intelligence Infrastructure',
+  title: 'VyavsAI | Autonomous Retail Intelligence Infrastructure',
   description: 'AI + Blockchain commerce platform. Predict. Simulate. Optimize. Execute.',
 }
 
