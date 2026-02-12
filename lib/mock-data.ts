@@ -105,6 +105,64 @@ export const creditScoreData = {
   onChainHash: "0x7f8e9d0c1b2a3456789012345678901234567890abcdef1234567890abcdef12",
 }
 
+// AI Insights / Suggestions
+export const aiInsights = [
+  {
+    id: 1,
+    category: "Pricing Optimization",
+    insight: "Increase price by 3% in Bangalore",
+    detail: "Demand elasticity analysis shows Bangalore consumers are price-inelastic for Electronics above 88th percentile. A 3% increase projects +4.8% margin with <0.5% volume loss.",
+    impact: "+4.8% margin",
+    confidence: 0.93,
+    priority: "high" as const,
+  },
+  {
+    id: 2,
+    category: "Inventory Optimization",
+    insight: "Shift 300 units to Pune",
+    detail: "Pune regional demand cluster is showing 18% higher velocity vs. current allocation. Rebalancing from overstock in Rajasthan reduces holding cost and meets latent demand.",
+    impact: "-12% holding cost",
+    confidence: 0.89,
+    priority: "high" as const,
+  },
+  {
+    id: 3,
+    category: "Marketing Allocation",
+    insight: "Reduce ad spend in low ROI regions",
+    detail: "Bihar and MP digital channels returning 0.4x ROAS vs. platform average of 2.1x. Recommend reallocating 65% of their budget to Karnataka and Maharashtra digital channels.",
+    impact: "+22% ROAS",
+    confidence: 0.91,
+    priority: "medium" as const,
+  },
+  {
+    id: 4,
+    category: "Supplier Risk",
+    insight: "Supplier B has 18% late delivery risk",
+    detail: "Based on last 90 days of fulfillment data, Supplier B (Textile Raw Materials) shows increasing lead time variance. Risk of 3-day stockout in next 2 weeks is 18%.",
+    impact: "Prevent stockout",
+    confidence: 0.86,
+    priority: "high" as const,
+  },
+  {
+    id: 5,
+    category: "Trend Alert",
+    insight: "Cotton price rising in 2 weeks",
+    detail: "Commodity futures and supplier sentiment data indicate cotton prices will increase 8-12% within 14 days. Recommend pre-purchasing 30-day supply buffer now.",
+    impact: "Save 8-12%",
+    confidence: 0.84,
+    priority: "medium" as const,
+  },
+  {
+    id: 6,
+    category: "Pricing Optimization",
+    insight: "Bundle SKU-1204 with SKU-3891 for 15% discount",
+    detail: "Cross-purchase analysis reveals 72% of buyers purchasing SKU-1204 also buy SKU-3891 within 7 days. Bundling at 15% discount projects +28% conversion for the pair.",
+    impact: "+28% conversion",
+    confidence: 0.88,
+    priority: "low" as const,
+  },
+]
+
 // Autopilot suggestions
 export const autopilotSuggestions = [
   {

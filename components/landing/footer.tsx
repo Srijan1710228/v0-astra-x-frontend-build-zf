@@ -4,6 +4,7 @@ import { Hexagon } from "lucide-react"
 const footerLinks = [
   { label: "Dashboard", href: "/dashboard" },
   { label: "Simulation", href: "/dashboard/simulation" },
+  { label: "AI Suggestions", href: "/dashboard/suggestions" },
   { label: "Autopilot", href: "/dashboard/autopilot" },
   { label: "Blockchain", href: "/dashboard/blockchain" },
   { label: "Credit Score", href: "/dashboard/credit-score" },

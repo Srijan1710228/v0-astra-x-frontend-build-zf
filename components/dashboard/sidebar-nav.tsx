@@ -7,6 +7,7 @@ import { useWallet } from "@/context/wallet-context"
 import {
   LayoutDashboard,
   FlaskConical,
+  Brain,
   Bot,
   Link2,
   CreditCard,
@@ -17,6 +18,7 @@ import {
 const navItems = [
   { href: "/dashboard", label: "Dashboard", icon: LayoutDashboard },
   { href: "/dashboard/simulation", label: "Simulation", icon: FlaskConical },
+  { href: "/dashboard/suggestions", label: "AI Suggestions", icon: Brain },
   { href: "/dashboard/autopilot", label: "Autopilot", icon: Bot },
   { href: "/dashboard/blockchain", label: "Blockchain Log", icon: Link2 },
   { href: "/dashboard/credit-score", label: "Credit Score", icon: CreditCard },

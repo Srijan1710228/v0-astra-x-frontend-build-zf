@@ -1,12 +1,27 @@
 "use client"
 
+import { useRouter } from "next/navigation"
 import Link from "next/link"
 import { useWallet } from "@/context/wallet-context"
 import { Button } from "@/components/ui/button"
-import { ArrowRight, Loader2 } from "lucide-react"
+import { ArrowRight, Loader2, Wallet } from "lucide-react"
 
 export function HeroSection() {
-  const { isConnected, isConnecting, connectWallet } = useWallet()
+  const router = useRouter()
+  const { isConnected, isConnecting, connectWallet, isOnboarded } = useWallet()
+
+  function handleLaunch() {
+    if (isOnboarded) {
+      router.push("/dashboard")
+    } else {
+      router.push("/onboarding")
+    }
+  }
+
+  async function handleConnect() {
+    await connectWallet()
+    router.push("/onboarding")
+  }
 
   return (
     <section className="relative flex min-h-screen items-center justify-center overflow-hidden px-6">
@@ -43,18 +58,20 @@ export function HeroSection() {
         </p>
 
         <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
-          <Link href="/dashboard">
-            <Button size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90 px-8">
-              Launch Dashboard
-              <ArrowRight className="ml-2 h-4 w-4" />
-            </Button>
-          </Link>
+          <Button
+            size="lg"
+            onClick={handleLaunch}
+            className="bg-primary text-primary-foreground hover:bg-primary/90 px-8"
+          >
+            Launch Dashboard
+            <ArrowRight className="ml-2 h-4 w-4" />
+          </Button>
 
           {!isConnected && (
             <Button
               variant="outline"
               size="lg"
-              onClick={connectWallet}
+              onClick={handleConnect}
               disabled={isConnecting}
               className="border-border bg-transparent text-foreground hover:bg-secondary px-8"
             >
@@ -64,9 +81,25 @@ export function HeroSection() {
                   Connecting...
                 </>
               ) : (
-                "Connect Wallet"
+                <>
+                  <Wallet className="mr-2 h-4 w-4" />
+                  Connect Wallet
+                </>
               )}
             </Button>
+          )}
+
+          {isConnected && !isOnboarded && (
+            <Link href="/onboarding">
+              <Button
+                variant="outline"
+                size="lg"
+                className="border-accent/30 bg-accent/5 text-accent hover:bg-accent/10 px-8"
+              >
+                Complete Setup
+                <ArrowRight className="ml-2 h-4 w-4" />
+              </Button>
+            </Link>
           )}
         </div>
       </div>

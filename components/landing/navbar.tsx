@@ -1,12 +1,27 @@
 "use client"
 
 import Link from "next/link"
+import { useRouter } from "next/navigation"
 import { useWallet } from "@/context/wallet-context"
 import { Button } from "@/components/ui/button"
-import { Hexagon, Loader2 } from "lucide-react"
+import { Hexagon, Loader2, Wallet } from "lucide-react"
 
 export function Navbar() {
-  const { isConnected, isConnecting, address, connectWallet } = useWallet()
+  const router = useRouter()
+  const { isConnected, isConnecting, address, connectWallet, isOnboarded } = useWallet()
+
+  async function handleConnect() {
+    await connectWallet()
+    router.push("/onboarding")
+  }
+
+  function handleLaunch() {
+    if (isOnboarded) {
+      router.push("/dashboard")
+    } else {
+      router.push("/onboarding")
+    }
+  }
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 glass border-b border-border/50">
@@ -25,9 +40,12 @@ export function Navbar() {
           <Link href="#how-it-works" className="text-sm text-muted-foreground transition-colors hover:text-foreground">
             How It Works
           </Link>
-          <Link href="/dashboard" className="text-sm text-muted-foreground transition-colors hover:text-foreground">
+          <button
+            onClick={handleLaunch}
+            className="text-sm text-muted-foreground transition-colors hover:text-foreground"
+          >
             Dashboard
-          </Link>
+          </button>
         </div>
 
         <div className="flex items-center gap-3">
@@ -42,7 +60,7 @@ export function Navbar() {
             <Button
               variant="outline"
               size="sm"
-              onClick={connectWallet}
+              onClick={handleConnect}
               disabled={isConnecting}
               className="border-border bg-transparent text-foreground hover:bg-secondary"
             >
@@ -52,15 +70,20 @@ export function Navbar() {
                   Connecting...
                 </>
               ) : (
-                "Connect Wallet"
+                <>
+                  <Wallet className="mr-1.5 h-3 w-3" />
+                  Connect Wallet
+                </>
               )}
             </Button>
           )}
-          <Link href="/dashboard">
-            <Button size="sm" className="bg-primary text-primary-foreground hover:bg-primary/90">
-              Launch Dashboard
-            </Button>
-          </Link>
+          <Button
+            size="sm"
+            onClick={handleLaunch}
+            className="bg-primary text-primary-foreground hover:bg-primary/90"
+          >
+            Launch Dashboard
+          </Button>
         </div>
       </nav>
     </header>

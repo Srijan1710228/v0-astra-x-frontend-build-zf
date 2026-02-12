@@ -2,13 +2,27 @@
 
 import { createContext, useContext, useState, useCallback, type ReactNode } from "react"
 
+export interface BusinessProfile {
+  businessName: string
+  category: string
+  revenueRange: string
+  primaryRegions: string[]
+}
+
 interface WalletContextType {
   address: string | null
   isConnected: boolean
   isConnecting: boolean
   network: string
+  businessProfile: BusinessProfile | null
+  isOnboarded: boolean
+  dataUploaded: boolean
+  analysisComplete: boolean
   connectWallet: () => Promise<void>
   disconnectWallet: () => void
+  setBusinessProfile: (profile: BusinessProfile) => void
+  setDataUploaded: (val: boolean) => void
+  setAnalysisComplete: (val: boolean) => void
 }
 
 const WalletContext = createContext<WalletContextType>({
@@ -16,14 +30,24 @@ const WalletContext = createContext<WalletContextType>({
   isConnected: false,
   isConnecting: false,
   network: "Polygon",
+  businessProfile: null,
+  isOnboarded: false,
+  dataUploaded: false,
+  analysisComplete: false,
   connectWallet: async () => {},
   disconnectWallet: () => {},
+  setBusinessProfile: () => {},
+  setDataUploaded: () => {},
+  setAnalysisComplete: () => {},
 })
 
 export function WalletProvider({ children }: { children: ReactNode }) {
   const [address, setAddress] = useState<string | null>(null)
   const [isConnecting, setIsConnecting] = useState(false)
   const [network] = useState("Polygon")
+  const [businessProfile, setBusinessProfileState] = useState<BusinessProfile | null>(null)
+  const [dataUploaded, setDataUploaded] = useState(false)
+  const [analysisComplete, setAnalysisComplete] = useState(false)
 
   const connectWallet = useCallback(async () => {
     setIsConnecting(true)
@@ -49,6 +73,13 @@ export function WalletProvider({ children }: { children: ReactNode }) {
 
   const disconnectWallet = useCallback(() => {
     setAddress(null)
+    setBusinessProfileState(null)
+    setDataUploaded(false)
+    setAnalysisComplete(false)
+  }, [])
+
+  const setBusinessProfile = useCallback((profile: BusinessProfile) => {
+    setBusinessProfileState(profile)
   }, [])
 
   return (
@@ -58,8 +89,15 @@ export function WalletProvider({ children }: { children: ReactNode }) {
         isConnected: !!address,
         isConnecting,
         network,
+        businessProfile,
+        isOnboarded: !!businessProfile,
+        dataUploaded,
+        analysisComplete,
         connectWallet,
         disconnectWallet,
+        setBusinessProfile,
+        setDataUploaded,
+        setAnalysisComplete,
       }}
     >
       {children}

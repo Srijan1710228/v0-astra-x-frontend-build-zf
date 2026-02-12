@@ -5,7 +5,7 @@ import { MetricCards } from "@/components/dashboard/metric-cards"
 import { RevenueChart } from "@/components/dashboard/revenue-chart"
 import { IndiaHeatmap } from "@/components/dashboard/india-heatmap"
 import { RiskIndicator } from "@/components/dashboard/risk-indicator"
-import { FlaskConical, Bot, Link2, CreditCard, ArrowRight } from "lucide-react"
+import { FlaskConical, Brain, Bot, Link2, CreditCard, ArrowRight } from "lucide-react"
 
 const quickLinks = [
   {
@@ -15,9 +15,15 @@ const quickLinks = [
     icon: FlaskConical,
   },
   {
+    href: "/dashboard/suggestions",
+    label: "AI Suggestions",
+    description: "View real-time AI insights",
+    icon: Brain,
+  },
+  {
     href: "/dashboard/autopilot",
     label: "AI Autopilot",
-    description: "Review AI suggestions",
+    description: "Auto-execute decisions",
     icon: Bot,
   },
   {
@@ -46,7 +52,7 @@ export default function DashboardPage() {
       </div>
 
       {/* Quick Navigation */}
-      <div className="grid grid-cols-2 gap-3 lg:grid-cols-4">
+      <div className="grid grid-cols-2 gap-3 lg:grid-cols-5">
         {quickLinks.map((link) => (
           <Link
             key={link.href}

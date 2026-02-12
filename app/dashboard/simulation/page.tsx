@@ -11,7 +11,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select"
-import { FlaskConical, Loader2, Bot, ArrowRight } from "lucide-react"
+import { FlaskConical, Loader2, Bot, Brain, ArrowRight } from "lucide-react"
 import {
   BarChart,
   Bar,
@@ -216,23 +216,39 @@ export default function SimulationPage() {
                 </div>
               </div>
 
-              {/* CTA to Autopilot */}
-              <Link
-                href="/dashboard/autopilot"
-                className="glass-card flex items-center justify-between rounded-2xl p-5 animate-fade-in-up transition-all duration-200 hover:border-primary/20"
-                style={{ animationDelay: "0.45s" }}
-              >
-                <div className="flex items-center gap-3">
-                  <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-accent/10">
-                    <Bot className="h-4 w-4 text-accent" strokeWidth={1.5} />
+              {/* CTA links */}
+              <div className="grid gap-3 sm:grid-cols-2 animate-fade-in-up" style={{ animationDelay: "0.45s" }}>
+                <Link
+                  href="/dashboard/suggestions"
+                  className="glass-card flex items-center justify-between rounded-2xl p-5 transition-all duration-200 hover:border-primary/20"
+                >
+                  <div className="flex items-center gap-3">
+                    <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-primary/10">
+                      <Brain className="h-4 w-4 text-primary" strokeWidth={1.5} />
+                    </div>
+                    <div>
+                      <p className="text-sm font-medium text-foreground">View AI Suggestions</p>
+                      <p className="text-xs text-muted-foreground">Insights from this simulation</p>
+                    </div>
                   </div>
-                  <div>
-                    <p className="text-sm font-medium text-foreground">Apply with Autopilot</p>
-                    <p className="text-xs text-muted-foreground">Let AI execute the optimal scenario</p>
+                  <ArrowRight className="h-4 w-4 text-muted-foreground" />
+                </Link>
+                <Link
+                  href="/dashboard/autopilot"
+                  className="glass-card flex items-center justify-between rounded-2xl p-5 transition-all duration-200 hover:border-primary/20"
+                >
+                  <div className="flex items-center gap-3">
+                    <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-accent/10">
+                      <Bot className="h-4 w-4 text-accent" strokeWidth={1.5} />
+                    </div>
+                    <div>
+                      <p className="text-sm font-medium text-foreground">Apply with Autopilot</p>
+                      <p className="text-xs text-muted-foreground">Let AI execute the optimal scenario</p>
+                    </div>
                   </div>
-                </div>
-                <ArrowRight className="h-4 w-4 text-muted-foreground" />
-              </Link>
+                  <ArrowRight className="h-4 w-4 text-muted-foreground" />
+                </Link>
+              </div>
 
               {/* Bar Chart Comparison */}
               <div className="glass-card rounded-2xl p-6 animate-fade-in-up" style={{ animationDelay: "0.5s" }}>
