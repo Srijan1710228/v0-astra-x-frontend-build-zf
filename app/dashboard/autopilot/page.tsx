@@ -1,6 +1,7 @@
 "use client"
 
 import { useState } from "react"
+import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Switch } from "@/components/ui/switch"
 import { Badge } from "@/components/ui/badge"
@@ -13,6 +14,8 @@ import {
   DollarSign,
   Package,
   Zap,
+  Link2,
+  ArrowRight,
 } from "lucide-react"
 
 const categoryIcons: Record<string, React.ElementType> = {
@@ -184,9 +187,17 @@ export default function AutopilotPage() {
 
       {/* Execution Log */}
       <div className="glass-card rounded-2xl p-6">
-        <h3 className="mb-4 text-sm font-medium text-muted-foreground">
-          Recent Execution Log
-        </h3>
+        <div className="mb-4 flex items-center justify-between">
+          <h3 className="text-sm font-medium text-muted-foreground">
+            Recent Execution Log
+          </h3>
+          <Link
+            href="/dashboard/blockchain"
+            className="inline-flex items-center gap-1 text-xs text-primary transition-colors hover:text-primary/80"
+          >
+            View all on-chain <ArrowRight className="h-3 w-3" />
+          </Link>
+        </div>
         <div className="space-y-3">
           {[
             {
@@ -218,6 +229,23 @@ export default function AutopilotPage() {
           ))}
         </div>
       </div>
+
+      {/* Cross-link to blockchain */}
+      <Link
+        href="/dashboard/blockchain"
+        className="glass-card flex items-center justify-between rounded-2xl p-5 transition-all duration-200 hover:border-primary/20"
+      >
+        <div className="flex items-center gap-3">
+          <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-primary/10">
+            <Link2 className="h-4 w-4 text-primary" strokeWidth={1.5} />
+          </div>
+          <div>
+            <p className="text-sm font-medium text-foreground">Blockchain Transparency</p>
+            <p className="text-xs text-muted-foreground">All approved actions are logged immutably on-chain</p>
+          </div>
+        </div>
+        <ArrowRight className="h-4 w-4 text-muted-foreground" />
+      </Link>
     </div>
   )
 }

@@ -1,5 +1,6 @@
 "use client"
 
+import Link from "next/link"
 import { creditScoreData } from "@/lib/mock-data"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
@@ -19,6 +20,9 @@ import {
   Copy,
   Check,
   ExternalLink,
+  FlaskConical,
+  Link2,
+  ArrowRight,
 } from "lucide-react"
 import { useState } from "react"
 
@@ -227,6 +231,40 @@ export default function CreditScorePage() {
             </Button>
           </div>
         </div>
+      </div>
+
+      {/* Cross-links */}
+      <div className="grid gap-3 sm:grid-cols-2">
+        <Link
+          href="/dashboard/simulation"
+          className="glass-card flex items-center justify-between rounded-2xl p-5 transition-all duration-200 hover:border-primary/20"
+        >
+          <div className="flex items-center gap-3">
+            <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-primary/10">
+              <FlaskConical className="h-4 w-4 text-primary" strokeWidth={1.5} />
+            </div>
+            <div>
+              <p className="text-sm font-medium text-foreground">Run Simulation</p>
+              <p className="text-xs text-muted-foreground">Test impact on your score</p>
+            </div>
+          </div>
+          <ArrowRight className="h-4 w-4 text-muted-foreground" />
+        </Link>
+        <Link
+          href="/dashboard/blockchain"
+          className="glass-card flex items-center justify-between rounded-2xl p-5 transition-all duration-200 hover:border-primary/20"
+        >
+          <div className="flex items-center gap-3">
+            <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-accent/10">
+              <Link2 className="h-4 w-4 text-accent" strokeWidth={1.5} />
+            </div>
+            <div>
+              <p className="text-sm font-medium text-foreground">Blockchain Log</p>
+              <p className="text-xs text-muted-foreground">View score verification history</p>
+            </div>
+          </div>
+          <ArrowRight className="h-4 w-4 text-muted-foreground" />
+        </Link>
       </div>
 
       {/* Score factors */}

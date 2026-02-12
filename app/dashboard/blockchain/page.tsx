@@ -1,6 +1,7 @@
 "use client"
 
 import { useState } from "react"
+import Link from "next/link"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { blockchainEvents } from "@/lib/mock-data"
@@ -14,6 +15,7 @@ import {
   CreditCard,
   ShieldCheck,
   ShieldOff,
+  ArrowRight,
 } from "lucide-react"
 
 const typeIcons: Record<string, React.ElementType> = {
@@ -72,6 +74,23 @@ export default function BlockchainPage() {
           </div>
         ))}
       </div>
+
+      {/* Cross-link to credit score */}
+      <Link
+        href="/dashboard/credit-score"
+        className="glass-card flex items-center justify-between rounded-2xl p-5 transition-all duration-200 hover:border-primary/20"
+      >
+        <div className="flex items-center gap-3">
+          <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-accent/10">
+            <CreditCard className="h-4 w-4 text-accent" strokeWidth={1.5} />
+          </div>
+          <div>
+            <p className="text-sm font-medium text-foreground">View Credit Score</p>
+            <p className="text-xs text-muted-foreground">On-chain verified creditworthiness based on transaction history</p>
+          </div>
+        </div>
+        <ArrowRight className="h-4 w-4 text-muted-foreground" />
+      </Link>
 
       {/* Transaction List */}
       <div className="space-y-3">

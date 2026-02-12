@@ -1,6 +1,7 @@
 "use client"
 
 import { useState, useCallback } from "react"
+import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Slider } from "@/components/ui/slider"
 import {
@@ -10,7 +11,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select"
-import { FlaskConical, Loader2 } from "lucide-react"
+import { FlaskConical, Loader2, Bot, ArrowRight } from "lucide-react"
 import {
   BarChart,
   Bar,
@@ -214,6 +215,24 @@ export default function SimulationPage() {
                   <span>100%</span>
                 </div>
               </div>
+
+              {/* CTA to Autopilot */}
+              <Link
+                href="/dashboard/autopilot"
+                className="glass-card flex items-center justify-between rounded-2xl p-5 animate-fade-in-up transition-all duration-200 hover:border-primary/20"
+                style={{ animationDelay: "0.45s" }}
+              >
+                <div className="flex items-center gap-3">
+                  <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-accent/10">
+                    <Bot className="h-4 w-4 text-accent" strokeWidth={1.5} />
+                  </div>
+                  <div>
+                    <p className="text-sm font-medium text-foreground">Apply with Autopilot</p>
+                    <p className="text-xs text-muted-foreground">Let AI execute the optimal scenario</p>
+                  </div>
+                </div>
+                <ArrowRight className="h-4 w-4 text-muted-foreground" />
+              </Link>
 
               {/* Bar Chart Comparison */}
               <div className="glass-card rounded-2xl p-6 animate-fade-in-up" style={{ animationDelay: "0.5s" }}>
